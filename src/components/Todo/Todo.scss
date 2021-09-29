@@ -1,0 +1,13 @@
+.todo {
+	&__title {
+		color: red;
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+
+	&__completed {
+		font-size: 1.6rem;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
