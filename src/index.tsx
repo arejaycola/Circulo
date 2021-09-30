@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Todo from './components/Todo/Todo';
+import StatusChecker from './components/StatusChecker/StatusChecker';
 
 import './styles/style.scss';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Todo />
+		<StatusChecker />
 	</React.StrictMode>,
 	document.getElementById('root')
 );

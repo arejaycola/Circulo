@@ -1,5 +1,5 @@
 {
-	"name": "boilerplate",
+	"name": "circulo",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -12,8 +12,11 @@
 		"@types/node": "^16.9.6",
 		"@types/react": "^17.0.24",
 		"@types/react-dom": "^17.0.9",
+		"@typescript-eslint/eslint-plugin": "^4.29.3",
+		"@typescript-eslint/parser": "^4.29.3",
 		"axios": "^0.21.4",
 		"eslint-config-airbnb": "^18.2.1",
+		"eslint-config-airbnb-typescript": "^14.0.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-import": "^2.24.2",
 		"eslint-plugin-jsx-a11y": "^6.4.1",
@@ -33,37 +36,6 @@
 		"stylelint-scss": "^3.21.0",
 		"typescript": "^4.4.3"
 	},
-	"bundledDependencies": [
-		"@testing-library/dom",
-		"@testing-library/jest-dom",
-		"@testing-library/react",
-		"@testing-library/user-event",
-		"@types/axios",
-		"@types/jest",
-		"@types/node",
-		"@types/react-dom",
-		"axios",
-		"msw",
-		"node-sass",
-		"react",
-		"react-dom",
-		"react-scripts",
-		"typescript",
-		"@types/react",
-		"eslint-config-airbnb",
-		"eslint-config-prettier",
-		"eslint-plugin-import",
-		"eslint-plugin-jsx-a11y",
-		"eslint-plugin-react",
-		"eslint-plugin-react-app",
-		"eslint-plugin-react-hooks",
-		"stylelint",
-		"stylelint-config-recommended",
-		"stylelint-config-sass-guidelines",
-		"stylelint-config-standard",
-		"stylelint-order",
-		"stylelint-scss"
-	],
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
@@ -87,10 +59,5 @@
 			"src/**/*.{js,jsx,ts,tsx}",
 			"!src/index.{js,jsx,ts,tsx}"
 		]
-	},
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^4.29.3",
-		"@typescript-eslint/parser": "^4.29.3",
-		"eslint-config-airbnb-typescript": "^14.0.0"
 	}
 }
