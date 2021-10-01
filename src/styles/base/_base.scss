@@ -4,8 +4,12 @@ html {
 }
 
 body {
-	background-color: $color-light-grey !important;
+	align-items: center;
+	background-color: $color-background;
 	box-sizing: border-box;
-	font-family: 'lato', sans-serif;
 	color: black;
+	display: flex;
+	font-family: 'lato', sans-serif;
+	justify-content: center;
+	margin: 10rem;
 }

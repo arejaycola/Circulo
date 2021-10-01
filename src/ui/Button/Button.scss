@@ -1,0 +1,22 @@
+.button {
+	background-color: lightgray;
+	border-radius: 1rem;
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	font-size: 2rem;
+	outline: none;
+	padding: 1rem 2rem;
+	transition: 0.2s all ease;
+	
+	&:hover {
+		background-color: darken(lightgray, 10%);
+		box-shadow: 0 3rem 2rem rgba(0, 0, 0, 0.2);
+		color: black;
+		transform: scale(1.05);
+	}
+
+	&:active {
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+		transform: scale(1);
+	}
+}

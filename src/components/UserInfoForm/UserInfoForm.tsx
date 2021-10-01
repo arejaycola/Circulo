@@ -1,88 +1,106 @@
 import axios, { AxiosResponse } from 'axios';
-import React, { useState } from 'react'
-import "./UserInfoForm.scss"
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { VeteranStatus } from '../../types/types';
+import Button from '../../ui/Button/Button';
+import InputGroup from '../../ui/InputGroup/InputGroup';
+import './UserInfoForm.scss';
 
 export interface VeteranInterface {
-    ssn: string,
-    gender: string,
-    last_name: string,
-    birth_date: string,
-    first_name: string
-    middle_name: string
+	ssn: string;
+	gender: string;
+	last_name: string;
+	birth_date: string;
+	first_name: string;
+	middle_name: string;
 }
-// enum VeteranStatus {
-//     "confirmed",
-//     "not confirmed"
-// }
 
-interface VeteranStatus {
-    veteran_status: string
-}
-const UserInfoForm = (): JSX.Element => {
-    // const [userInfo, setUserInfo] = useState({} as VeteranInterface)
-    const [firstName, setFirstName] = useState<string>('');
-    const [middleName, setMiddleName] = useState<string>('');
-    const [lastName, setLastName] = useState<string>('');
-    const [gender, setGender] = useState<string>('');
-    const [birthDate, setBirthDate] = useState<string>('');
-    const [ssn, setSsn] = useState<string>('');
-    const [status, setStatus] = useState<VeteranStatus>()
-    const onButtonClick = async (): Promise<void> => {
-        // setUserInfo({
-        //     last
-        // })
-        const userInfo: VeteranInterface = {
-            "ssn": "796130115",
-            "gender": "F",
-            "last_name": "Ellis",
-            "birth_date": "1967-06-19",
-            "first_name": "Tamara",
-            "middle_name": "E"
-        }
-        // const userInfo: VeteranInterface = {
-        //     "ssn": "555-55-5555",
-        //     "gender": "M",
-        //     "last_name": "Doe",
-        //     "birth_date": "1965-01-01",
-        //     "first_name": "John",
-        //     "middle_name": "Theodore"
-        // }
-        // const UserInfo: VeteranInterface = {
-        //     first_name: firstName,
-        //     last_name: lastName,
-        //     middle_name: middleName,
-        //     gender,
-        //     birth_date: birthDate,
-        //     ssn
-        // }
+const UserInfoForm = ({ setError, setStatus }: { setStatus: (status: VeteranStatus) => void; setError: (error: boolean) => void }): JSX.Element => {
+	const [userInfo, setUserInfo] = useState<VeteranInterface>({
+		ssn: '',
+		gender: '',
+		last_name: '',
+		first_name: '',
+		middle_name: '',
+		birth_date: '',
+	});
 
-        const response: AxiosResponse<VeteranStatus> = await axios.post<VeteranStatus>('https://sandbox-api.va.gov/services/veteran_confirmation/v0/status', userInfo, {
-            headers: {
-                "content-type": "application/json",
-                "apikey": "WTL49eehXWUdgqGmDOgs2kErBNcm8c3f"
-            }
-        })
+	const onFormSubmit = async (e: FormEvent): Promise<void> => {
+		e.preventDefault();
 
-        setStatus(response.data)
+		const { data }: AxiosResponse = await axios.post('https://sandbox-api.va.gov/services/veteran_confirmation/v0/status', userInfo, {
+			headers: {
+				'content-type': 'application/json',
+				apikey: 'WTL49eehXWUdgqGmDOgs2kErBNcm8c3f',
+			},
+		});
 
-    }
+		if (data) {
+			setError(false);
+			setStatus(data);
+		} else {
+			setError(true);
+		}
+	};
 
-    return (
-        <div>
-            <div>
-                <input type='text' placeholder="First Name" required value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                <input type='text' placeholder="Middle Name" required value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
-                <input type='text' placeholder="Last Name" required value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                <input type='text' placeholder="Gender" required value={gender} onChange={(e) => setGender(e.target.value)} />
-                <input type='text' placeholder="Birth Date" required value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
-                <input type='text' placeholder="Social Security Number" required value={ssn} onChange={(e) => setSsn(e.target.value)} />
-                <button type="button" onClick={onButtonClick}>Enter</button>
-            </div>
-            <div>
-                Status: {status?.veteran_status}
-            </div>
-        </div>
-    )
-}
+	return (
+		<div className="user-info">
+			<form className="user-info-form" action="#" onSubmit={onFormSubmit}>
+				<div className="user-info__inputs">
+					<InputGroup
+						label="First Name"
+						id="first-name"
+						type="text"
+						required
+						value={userInfo.first_name}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => setUserInfo({ ...userInfo, first_name: e.target.value })}
+					/>
+
+					<InputGroup
+						id="middle-name"
+						label="Middle Name"
+						type="text"
+						required
+						value={userInfo.middle_name}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => setUserInfo({ ...userInfo, middle_name: e.target.value })}
+					/>
+					<InputGroup
+						type="text"
+						required
+						value={userInfo.last_name}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => setUserInfo({ ...userInfo, last_name: e.target.value })}
+						id="last-name"
+						label="Last Name"
+					/>
+					<InputGroup
+						type="text"
+						required
+						value={userInfo.gender}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => setUserInfo({ ...userInfo, gender: e.target.value })}
+						id="gender"
+						label="Gender"
+					/>
+					<InputGroup
+						type="text"
+						required
+						value={userInfo.birth_date}
+						placeholder="YYYY-MM-DD"
+						onChange={(e: ChangeEvent<HTMLInputElement>) => setUserInfo({ ...userInfo, birth_date: e.target.value })}
+						id="birth-date"
+						label="Birth Date"
+					/>
+					<InputGroup
+						type="text"
+						required
+						value={userInfo.ssn}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => setUserInfo({ ...userInfo, ssn: e.target.value })}
+						id="ssn"
+						label="SSN"
+					/>
+					<Button>Submit</Button>
+				</div>
+			</form>
+		</div>
+	);
+};
 
 export default UserInfoForm;

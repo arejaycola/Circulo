@@ -1,8 +1,4 @@
-## Background
 
-I am hoping that this will provide a good starting point for any project using TypeScript, React, Jest, ESLint, and Stylint.
-
-Make sure you check out the [Style Guide](docs/STYLE.md).
 
 ## Getting things running...
 
@@ -27,13 +23,3 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

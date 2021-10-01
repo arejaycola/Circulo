@@ -1,6 +1,36 @@
-.status-checker {
-    // display: flex;
-    // flex-direction: column;
-    // width: 1000px;
+@import '../../styles/base/vars';
 
+.status-checker {
+	align-items: center;
+
+	background-color: lightgray;
+	border-radius: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2rem;
+	width: 75rem;
+
+	&__title {
+		font-size: 4rem;
+		margin-bottom: 0;
+		padding-bottom: 0;
+		text-align: center;
+	}
+
+	&__subtitle {
+		font-size: 2rem;
+		margin: 0 0 2rem;
+		text-align: center;
+	}
+
+	&__status {
+		font-size: 2rem;
+		margin-top: 3rem;
+
+		&__text {
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
 }

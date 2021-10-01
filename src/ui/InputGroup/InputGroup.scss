@@ -1,0 +1,22 @@
+@import '../../styles/base/vars';
+
+.input__group {
+	font-size: 1.8rem;
+	margin-bottom: 2rem;
+	width: 100%;
+
+	label {
+		display: flex;
+		flex-direction: column;
+		font-size: inherit;
+	}
+
+	input {
+		border-radius: 0.5rem;
+		font-size: inherit;
+
+		height: 2rem;
+		margin-top: 0.5rem;
+		padding: 0.6rem 1.2rem;
+	}
+}

@@ -1,23 +1,24 @@
-// import axios, { AxiosResponse } from 'axios';
-// import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { VeteranStatus } from '../../types/types';
 import UserInfoForm from '../UserInfoForm/UserInfoForm';
-import './StatusChecker.scss'
 
-// export interface VeteranInterface {
-// 	ssn: string,
-// 	gender: string,
-// 	last_name: string,
-// 	birth_date: Date,
-// 	first_name: string
-// 	middle_name: string
-// }
+import './StatusChecker.scss';
 
-const StatusChecker = () => (
-	<div className="status-checker">
-		<h1>Complete the form below to determine VA status:</h1>
-		<UserInfoForm />
-	</div>
-)
+const StatusChecker = () => {
+	const [status, setStatus] = useState<VeteranStatus>();
+	const [error, setError] = useState<boolean>(false);
 
-
+	return (
+		<div className="status-checker">
+			<h1 className="status-checker__title">VA Status Checker</h1>
+			<h5 className="status-checker__subtitle">Enter information below to determine VA status</h5>
+			<UserInfoForm setStatus={setStatus} setError={setError} />
+			{status && (
+				<div className="status-checker__status">
+					Status: <span className="status-checker__status__text">{error ? 'Error retreiving status' : status?.veteran_status}</span>
+				</div>
+			)}
+		</div>
+	);
+};
 export default StatusChecker;
