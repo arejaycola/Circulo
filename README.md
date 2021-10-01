@@ -6,6 +6,8 @@ Running `npm install` in the project root (where ever package.json lives) should
 
 Once you have finished installing the application use `npm start` to start the application in development mode.
 
+Running `npm test` in the project root will run the Jest test runner with several tests that I have implemented.
+
 
 ## Available Scripts
 
